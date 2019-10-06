@@ -17,6 +17,11 @@ def get_larger_version(version_one, version_two):
             # then version_one is has more levels, and since we have not returned
             # yet then version one must be the greater version number
             return version_one
+        elif i == len(version_one_values) - 1 and i == len(version_two_values) - 1:
+            # then there are the same number of levels in both, and we have reached the end. Want to check if they are equal
+            if int(version_one_values[i]) == int(version_two_values[i]):
+                # then they are equal, return both
+                return version_one, version_two
         else:
             if int(version_one_values[i]) > int(version_two_values[i]):
                 return version_one
@@ -28,6 +33,7 @@ def get_larger_version(version_one, version_two):
 
 # test cases
 test_cases = [
+    ["1.2.3", "1.2.3"],
     ["1.2", "2.1.5"],
     ["5.8.2", "1"],
     ["4.6.7.8.9.12", "4.6.7.8.9"],
