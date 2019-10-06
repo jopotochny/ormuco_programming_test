@@ -53,4 +53,11 @@ This code can be found in question_2.py, and as before running the file will run
 
 ## Q3
 Below you will find a diagram of my solution for the Geo-Distributed LRU Cache
-![]()
+![](https://github.com/jopotochny/ormuco_programming_test/blob/master/images/LRUCache.png "LRUCache")
+
+My solution is made up of a class that represents the actual [LRUCache](https://github.com/jopotochny/ormuco_programming_test/blob/master/OrmucoCache/LRUCache.py), a class that acts as the [handler](https://github.com/jopotochny/ormuco_programming_test/blob/master/OrmucoCache/LRUCacheHandler.py) for a Python socket server, and a [manager](https://github.com/jopotochny/ormuco_programming_test/blob/master/OrmucoCache/LRUCacheManager.py) class that upon initialization runs the LRUCache in memory, where it will listen for requests to either get a value or update the cache. 
+
+An instance of the cache acts either as a master cache, which is assigned by the user any number of child caches, or a child cahce, which is assigned a master cache. Whenever a cache lookup results in a cache miss, the cache will add the missed value to itself. If the cache is a child cache, it conencts to its assigned master cache and sends it the missed item. The master cache then adds the missed item to itself and propagates the missed item to all of its children in order for them to update as well. In this way, all caches within a master cache's network should remain consistent. Further work could be done to connect master caches, allowing for various regions to remain consistent as well.
+
+Cached items also expire, and the cache is purged of expired items only after a request is made for an item. For ease of access, the LRUCache is composed of a Python dictionary and a circular doubly linked list consisting of [CacheNodes](https://github.com/jopotochny/ormuco_programming_test/blob/master/OrmucoCache/CacheNode.py).
+
