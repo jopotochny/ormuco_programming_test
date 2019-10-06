@@ -11,4 +11,4 @@ class CacheNode:
         if self.expire_time is None:
             # then this node is the root
             return False
-        return self.expire_time <= datetime.now()
+        return self.expire_time <= datetime.now().timestamp()
