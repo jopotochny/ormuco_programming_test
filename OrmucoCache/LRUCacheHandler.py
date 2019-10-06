@@ -2,7 +2,6 @@ import socketserver
 import json
 import socket
 from OrmucoCache.Constants import ACTION_GET_DATA, ACTION_UPDATE_CACHE
-from OrmucoCache.LRUCache import LRUCache
 class LRUCacheHandler(socketserver.BaseRequestHandler):
     def handle(self):
         self.data = json.loads(self.request.recv(4096).strip())

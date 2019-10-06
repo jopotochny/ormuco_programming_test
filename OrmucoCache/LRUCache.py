@@ -76,7 +76,3 @@ class LRUCache:
                 current_node = current_node.prev_node
     def get_caches_to_update(self):
         return self.caches_to_update
-if __name__ == '__main__':
-    p = LRUCache()
-    for c in 'abcdecaeaa':
-        print(c, p(c))

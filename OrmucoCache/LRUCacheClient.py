@@ -1,10 +1,5 @@
-import socketserver
-import sys
-import json
 from OrmucoCache.LRUCache import LRUCache
-from OrmucoCache.LRUCacheHandler import LRUCacheHandler
 from OrmucoCache.LRUCacheManager import LRUCacheManager
-from threading import Thread
 
 def value_function(a):
     return a
@@ -19,11 +14,3 @@ if __name__ == "__main__":
     # create_manager(HOST, PORTS[0], 4096, update_list[0])
     # create_manager(HOST, PORTS[1], 4096, update_list[1])
     create_manager(HOST, PORTS[2], 4096, update_list[2])
-
-
-
-    # for i in range(len(PORTS)):
-    #     thread = Thread(target=create_manager, args=(HOST, PORTS[i], 4096, update_list[i]))
-    #     thread.start()
-    #     thread.join()
-    # print("thread finished...exiting")
